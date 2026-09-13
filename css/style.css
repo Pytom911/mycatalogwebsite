@@ -540,7 +540,12 @@ button { font-family: inherit; cursor: pointer; }
 .thumb-yellow { background: var(--accent); color: var(--primary); }
 .thumb-white { background: #F3F6FD; color: var(--primary); }
 
-.portfolio-content { padding: 18px 20px; }
+.portfolio-content {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .portfolio-title { font-size: 17px; margin-bottom: 10px; }
 
 .portfolio-badge {
@@ -585,6 +590,41 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--primary-hover);
   transform: translate(2px, 2px);
   box-shadow: var(--shadow-hover);
+}
+
+.portfolio-btn.whatsapp { background: #22C55E; color: var(--white); }
+.portfolio-btn.whatsapp:hover { background: #16A34A; }
+
+.portfolio-btn.disabled {
+  background: #E5E9F2;
+  color: var(--gray);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.portfolio-features {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.portfolio-features li {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray);
+}
+
+.portfolio-features .bi { color: var(--primary); font-size: 15px; margin-top: 2px; }
+
+.portfolio-actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* === KENAPA PILIH KAMI === */
