@@ -7,6 +7,9 @@
 (function () {
   'use strict';
 
+  /* Aktifkan mode JS (untuk animasi reveal) */
+  document.documentElement.classList.add('js');
+
   /* === Sidebar Mobile === */
   const menuToggle = document.getElementById('menuToggle');
   const sidebar = document.getElementById('sidebar');
@@ -77,5 +80,34 @@
     sections.forEach(function (section) {
       spy.observe(section);
     });
+  }
+
+  /* === Fade-in saat scroll (sekali saja, ringan untuk mobile) === */
+  const revealEls = Array.prototype.slice.call(
+    document.querySelectorAll('.reveal')
+  );
+
+  if (revealEls.length) {
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -6% 0px' }
+      );
+
+      revealEls.forEach(function (el) {
+        revealObserver.observe(el);
+      });
+    } else {
+      revealEls.forEach(function (el) {
+        el.classList.add('is-visible');
+      });
+    }
   }
 })();

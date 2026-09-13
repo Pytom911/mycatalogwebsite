@@ -675,6 +675,10 @@ button { font-family: inherit; cursor: pointer; }
 .feature-item h4 { font-size: 15px; margin-bottom: 4px; }
 .feature-item p { font-size: 13px; font-weight: 500; color: var(--gray); }
 
+.feature-item,
+.feature-item h4,
+.feature-item p { text-align: left; }
+
 .why-btn-wrap {
   display: flex;
   justify-content: center;
@@ -827,6 +831,69 @@ footer {
   font-size: 13px;
   font-weight: 500;
   color: #9FAAC4;
+}
+
+/* === ANIMASI === */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Load: navbar */
+.site-nav .nav-inner {
+  animation: fadeInDown 0.5s 0.1s ease both;
+}
+
+/* Load: hero berurutan */
+.hero-inner > * { animation: fadeInUp 0.5s ease both; }
+.hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
+
+/* Scroll reveal (hanya aktif saat JS jalan) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.js .reveal-grid > *:nth-child(1) { transition-delay: 0ms; }
+.js .reveal-grid > *:nth-child(2) { transition-delay: 70ms; }
+.js .reveal-grid > *:nth-child(3) { transition-delay: 140ms; }
+.js .reveal-grid > *:nth-child(4) { transition-delay: 210ms; }
+.js .reveal-grid > *:nth-child(5) { transition-delay: 280ms; }
+.js .reveal-grid > *:nth-child(6) { transition-delay: 350ms; }
+
+@media (max-width: 768px) {
+  .js .reveal {
+    transform: translateY(12px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .js .reveal { opacity: 1; transform: none; }
 }
 
 /* === RESPONSIVE === */
